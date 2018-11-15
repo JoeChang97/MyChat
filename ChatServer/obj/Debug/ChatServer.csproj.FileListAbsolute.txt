@@ -20,3 +20,14 @@ D:\Github\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.csproj.CoreCompileI
 D:\Github\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.csproj.CopyComplete
 D:\Github\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.exe
 D:\Github\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.pdb
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\bin\Debug\ChatServer.exe.config
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\bin\Debug\ChatServer.exe
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\bin\Debug\ChatServer.pdb
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\bin\Debug\MyChat.exe
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\bin\Debug\MyChat.pdb
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\bin\Debug\MyChat.exe.config
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.csprojAssemblyReference.cache
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.csproj.CoreCompileInputs.cache
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.csproj.CopyComplete
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.exe
+C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\ChatServer\obj\Debug\ChatServer.pdb

@@ -12,6 +12,21 @@ namespace MyChat.ViewModels
     {
         private readonly Client _client;
 
+        public int _score1;
+
+        public int Score1
+        {
+            get { return _score1; }
+            set { _score1 = value; NotifyPropertyChanged(); }
+        }
+
+        public int _score2;
+        public int Score2
+        {
+            get { return _score2; }
+            set { _score2 = value; NotifyPropertyChanged(); }
+        }
+
 
         public string Message
         {
