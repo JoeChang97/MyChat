@@ -7,8 +7,8 @@
         Title="Client" Height="450" Width="800">
     <Window.Resources>
         <ResourceDictionary>
-            <ImageSource x:Key="ImageCorrect">D:/Github/ChatProject/MyChat/Images/CorrectImage.jpg</ImageSource>
-            <ImageSource x:Key="ImageIncorrect">D:/Github/ChatProject/MyChat/Images/IncorrectImage.jpg</ImageSource>
+            <ImageSource x:Key="ImageCorrect">C:/Users/Joseph Chang/Desktop/ChatProject/MyChat/Images/CorrectImage.jpg</ImageSource>
+            <ImageSource x:Key="ImageIncorrect">C:/Users/Joseph Chang/Desktop/ChatProject/MyChat/Images/IncorrectImage.jpg</ImageSource>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
