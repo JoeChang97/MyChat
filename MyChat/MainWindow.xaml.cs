@@ -25,12 +25,14 @@ namespace MyChat
         private Dictionary<int, String> questions = new Dictionary<int, String>();
         private Dictionary<int, bool> answers = new Dictionary<int, bool>();
         private int questionNum = 0;
-        private string playing1 = "Player 1";
-        private string playing2 = "Player 2";
+        private bool isPlayer1Turn;
+        private string playing1 = "Player 1 is playing";
+        private string playing2 = "Player 2 is playing";
         ClientViewModel vm = new ClientViewModel();
 
         public MainWindow()
         {
+            isPlayer1Turn = true;
             addQuestions();
             
             InitializeComponent();
@@ -38,6 +40,8 @@ namespace MyChat
             this.DataContext = vm;
             vm.Score1 = 0;
             vm.Score2 = 0;
+            
+
         }
 
         private void addQuestions()
@@ -51,7 +55,7 @@ namespace MyChat
             questions.Add(2, "SAU was founded in 1892");
             answers.Add(2, true);
 
-            questions.Add(3, "It is Nevada law that all casinos have one clock on every floor");
+            questions.Add(3, "It is Nevada law that all casinos" +"\n"+" have one clock on every floor");
             answers.Add(3, false);
 
             questions.Add(4, "George Washington had wooden teeth");
@@ -93,6 +97,9 @@ namespace MyChat
         {   
             QuestionLabel.Content = questions[questionNum];
             Console.WriteLine("question: " + questionNum);
+           
+            PlayerTurn.Content = isPlayer1Turn ? playing1 : playing2;
+            Console.WriteLine(PlayerTurn.Content);
         }
 
         private void CheckAnswerFor(bool answer)
@@ -100,11 +107,13 @@ namespace MyChat
             if (answer == (bool)answers[questionNum]) {
                 Console.WriteLine(playing1 + " got the right answer");
                 AddScore1();
+
             } else
             {
                 Console.WriteLine(playing1 + " got the wrong answer");
             }
             questionNum++;
+            isPlayer1Turn = !isPlayer1Turn;
         }
 
         private void AddScore1()
