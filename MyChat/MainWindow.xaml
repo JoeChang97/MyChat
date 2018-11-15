@@ -12,20 +12,20 @@
         <my1:ClientViewModel />
         </Window.DataContext>-->
     <Grid>
-        <Button Content="Connect" Command="{Binding Connect}" HorizontalAlignment="Left" Height="26" Margin="390,309,0,0" VerticalAlignment="Top" Width="89" RenderTransformOrigin="-0.662,0.475"/>
-        <Button Content="Send" Command="{Binding Send}" HorizontalAlignment="Left" Height="26" Margin="390,363,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="-2.37,3.831"/>
+        <Button Content="Connect" Command="{Binding Connect}" HorizontalAlignment="Left" Height="26" Margin="390,309,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="-0.662,0.475"/>
+        <Button Content="Send" Command="{Binding Send}" HorizontalAlignment="Left" Height="49" Margin="390,340,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="-2.37,3.831"/>
         <TextBox HorizontalAlignment="Left" Height="80" Margin="10,309,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Width="375"/>
         <TextBox HorizontalAlignment="Left" Height="269" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Chatboard, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="375"/>
-        <Label x:Name="QuestionLabel" Content="Question" Width="228" HorizontalAlignment="Right" Margin="0,41,4.333,0" VerticalAlignment="Top"/>
-        <Button x:Name="TrueBtn" Content="True fact" HorizontalAlignment="Left" Margin="508,74,0,0" VerticalAlignment="Top" Width="74" Click="TrueBtn_Click"/>
-        <Button x:Name="FalseBtn" Content="False bruh" HorizontalAlignment="Left" Margin="627,74,0,0" VerticalAlignment="Top" Width="74" Click="FalseBtn_Click"/>
-        <Label Content="Player 1" HorizontalAlignment="Left" Margin="508,151,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Path= Score1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="627,151,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="PlayerTurn" Content="Player 1 is playing" HorizontalAlignment="Left" Margin="555,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Leaderboard" HorizontalAlignment="Left" Margin="508,120,0,0" VerticalAlignment="Top"/>
-        <Label Content="Player 2" HorizontalAlignment="Left" Margin="508,182,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Path= Score2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="627,182,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="80" Margin="508,309,0,0" VerticalAlignment="Top" Width="193"/>
+        <Label x:Name="QuestionLabel" Content="Question" Width="392" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="390,41,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="TrueBtn" Content="True fact" HorizontalAlignment="Left" Margin="464,90,0,0" VerticalAlignment="Top" Width="74" Click="TrueBtn_Click" Height="32"/>
+        <Button x:Name="FalseBtn" Content="False bruh" HorizontalAlignment="Left" Margin="627,90,0,0" VerticalAlignment="Top" Width="74" Click="FalseBtn_Click" Height="32"/>
+        <Label Content="Player 1" HorizontalAlignment="Left" Margin="464,187,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path= Score1, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="627,187,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="PlayerTurn" Content="Player 1 is playing" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="390,10,0,0" VerticalAlignment="Top" Width="392"/>
+        <Label Content="Leaderboard" HorizontalAlignment="Left" Margin="464,156,0,0" VerticalAlignment="Top"/>
+        <Label Content="Player 2" HorizontalAlignment="Left" Margin="464,218,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Path= Score2, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="627,218,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="115" Margin="488,274,0,0" VerticalAlignment="Top" Width="194"/>
 
     </Grid>
 </Window>

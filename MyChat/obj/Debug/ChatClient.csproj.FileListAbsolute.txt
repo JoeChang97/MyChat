@@ -13,3 +13,18 @@ C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\MyChat\obj\Debug\ChatClient.csp
 C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\MyChat\obj\Debug\MyChat.exe
 C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\MyChat\obj\Debug\MyChat.pdb
 C:\Users\Joseph Chang\Desktop\ChatProject\MyChat\MyChat\bin\Debug\MyChat.pdb
+D:\Github\ChatProject\MyChat\MyChat\bin\Debug\MyChat.exe.config
+D:\Github\ChatProject\MyChat\MyChat\bin\Debug\MyChat.exe
+D:\Github\ChatProject\MyChat\MyChat\bin\Debug\MyChat.pdb
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\ChatClient.csprojAssemblyReference.cache
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\MainWindow.g.cs
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\App.g.cs
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\MyChat_MarkupCompile.cache
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\MyChat_MarkupCompile.lref
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\MainWindow.baml
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\MyChat.g.resources
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\MyChat.Properties.Resources.resources
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\ChatClient.csproj.GenerateResource.cache
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\ChatClient.csproj.CoreCompileInputs.cache
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\MyChat.exe
+D:\Github\ChatProject\MyChat\MyChat\obj\Debug\MyChat.pdb
