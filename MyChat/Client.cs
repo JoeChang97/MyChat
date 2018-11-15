@@ -39,6 +39,9 @@ namespace MyChat
         {
             _client = new TcpClient("127.0.0.1", 8888);
             OnPropertyChanged("Connected");
+            ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = true;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = true;
+
             Send();
             _chatboard = "Welcome " + _message;
             var thread = new Thread(GetMessage);
