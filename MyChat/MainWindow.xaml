@@ -16,7 +16,7 @@
         <Button Content="Send" Command="{Binding Send}" HorizontalAlignment="Left" Height="26" Margin="390,363,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="-2.37,3.831"/>
         <TextBox HorizontalAlignment="Left" Height="80" Margin="10,309,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Width="375"/>
         <TextBox HorizontalAlignment="Left" Height="269" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Chatboard, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="375"/>
-        <Label x:Name="QuestionLabel" Content="Question" Width="75" HorizontalAlignment="Right" Margin="0,41,211.333,0" VerticalAlignment="Top"/>
+        <Label x:Name="QuestionLabel" Content="Question" Width="228" HorizontalAlignment="Right" Margin="0,41,4.333,0" VerticalAlignment="Top"/>
         <Button x:Name="TrueBtn" Content="True fact" HorizontalAlignment="Left" Margin="508,74,0,0" VerticalAlignment="Top" Width="74" Click="TrueBtn_Click"/>
         <Button x:Name="FalseBtn" Content="False bruh" HorizontalAlignment="Left" Margin="627,74,0,0" VerticalAlignment="Top" Width="74" Click="FalseBtn_Click"/>
         <Label Content="Player 1" HorizontalAlignment="Left" Margin="508,151,0,0" VerticalAlignment="Top"/>

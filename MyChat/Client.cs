@@ -40,7 +40,7 @@ namespace MyChat
             _client = new TcpClient("127.0.0.1", 8888);
             OnPropertyChanged("Connected");
             Send();
-            _chatboard = "Welcome" + _message;
+            _chatboard = "Welcome " + _message;
             var thread = new Thread(GetMessage);
             thread.Start();
         }
@@ -60,6 +60,8 @@ namespace MyChat
         {
             _client.WriteString(_message);
         }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
