@@ -1,0 +1,16 @@
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\bin\Debug\MyChat.exe.config
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\bin\Debug\MyChat.exe
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\bin\Debug\MyChat.pdb
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\ChatClient.csprojAssemblyReference.cache
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\MainWindow.g.cs
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\App.g.cs
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\MyChat_MarkupCompile.cache
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\MyChat_MarkupCompile.lref
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\MainWindow.baml
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\MyChat.g.resources
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\MyChat.Properties.Resources.resources
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\ChatClient.csproj.GenerateResource.cache
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\ChatClient.csproj.CoreCompileInputs.cache
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\MyChat.exe
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\MyChat.pdb
+C:\Users\Joseph Chang\source\repos\MyChat\MyChat\obj\Debug\GeneratedInternalTypeHelper.g.cs
