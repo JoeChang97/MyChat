@@ -25,14 +25,13 @@ namespace MyChat
         private Dictionary<int, String> questions = new Dictionary<int, String>();
         private Dictionary<int, bool> answers = new Dictionary<int, bool>();
         private int questionNum = 0;
-        private bool isPlayer1Turn;
+        private bool player1IsPlaying = true;
         private string playing1 = "Player 1 is playing";
         private string playing2 = "Player 2 is playing";
         ClientViewModel vm = new ClientViewModel();
 
         public MainWindow()
         {
-            isPlayer1Turn = true;
             addQuestions();
             
             InitializeComponent();
@@ -40,8 +39,6 @@ namespace MyChat
             this.DataContext = vm;
             vm.Score1 = 0;
             vm.Score2 = 0;
-            
-
         }
 
         private void addQuestions()
@@ -75,7 +72,6 @@ namespace MyChat
 
             questions.Add(9, "Are you a robot?");
             answers.Add(9, false);
-
         }
 
         private void TrueBtn_Click(object sender, RoutedEventArgs e)
@@ -98,7 +94,7 @@ namespace MyChat
             QuestionLabel.Content = questions[questionNum];
             Console.WriteLine("question: " + questionNum);
            
-            PlayerTurn.Content = isPlayer1Turn ? playing1 : playing2;
+            PlayerTurn.Content = player1IsPlaying ? playing1 : playing2;
             Console.WriteLine(PlayerTurn.Content);
         }
 
@@ -106,24 +102,23 @@ namespace MyChat
         {
             if (answer == (bool)answers[questionNum]) {
                 Console.WriteLine(playing1 + " got the right answer");
-                AddScore1();
-
+                gameImg.Source = (ImageSource)FindResource("ImageCorrect");
+                if (player1IsPlaying)
+                {
+                    vm.Score1 += 1;
+                } else
+                {
+                    vm.Score2 += 1;
+                }
+                // TODO: show RIGHT ANSWER meme image
             } else
             {
                 Console.WriteLine(playing1 + " got the wrong answer");
+                gameImg.Source = (ImageSource)FindResource("ImageIncorrect");
+                // TODO: show WRONG ANSWER meme image
             }
-            questionNum++;
-            isPlayer1Turn = !isPlayer1Turn;
-        }
-
-        private void AddScore1()
-        {
-            vm.Score1 += 1;
-        }
-        
-        private void AddScore2()
-        {
-            vm.Score2 += 1;
+            questionNum = questionNum == questions.Count - 1 ? 0 : questionNum + 1;
+            player1IsPlaying = !player1IsPlaying;
         }
     }
 }
