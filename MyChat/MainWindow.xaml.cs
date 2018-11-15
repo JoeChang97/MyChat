@@ -20,9 +20,23 @@ namespace MyChat
     /// </summary>
     public partial class MainWindow : Window
     {
+        Dictionary<String, bool> questions = new Dictionary<string, bool>();
+
         public MainWindow()
         {
+            questions.Add("Are you a robot?", false);
+            UpdateUI();
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateUI()
+        {
+
         }
     }
 }
