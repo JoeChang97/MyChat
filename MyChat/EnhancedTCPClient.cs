@@ -20,6 +20,8 @@ namespace MyChat
             stream.Flush();
         }
 
+
+
         public static string ReadString(this TcpClient client)
         {
             var bytes = new byte[client.ReceiveBufferSize];
@@ -28,5 +30,15 @@ namespace MyChat
             var msg = Encoding.ASCII.GetString(bytes);
             return msg.Substring(0, msg.IndexOf("\0", StringComparison.Ordinal));
         }
+
+        public static void WriteScore(this TcpClient client, int score)
+        {
+            string scorestring = score.ToString();
+            byte[] bytes = Encoding.ASCII.GetBytes(scorestring);
+            var stream = client.GetStream();
+            stream.Write(bytes, 0, bytes.Length);
+        }
+
+       
     }
 }

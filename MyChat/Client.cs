@@ -10,9 +10,25 @@ using System.Threading.Tasks;
 
 namespace MyChat
 {
-    class Client:INotifyPropertyChanged
+    class Client : INotifyPropertyChanged
     {
         private TcpClient _client;
+
+        private int _score1;
+
+        public int Score1
+        {
+            get { return _score1; }
+            set { _score1 = value; OnPropertyChanged(); }
+        }
+
+        private int _score2;
+
+        public int Score2
+        {
+            get { return _score2; }
+            set { _score2 = value; OnPropertyChanged(); }
+        }
 
         private string _chatboard;
 
@@ -62,6 +78,11 @@ namespace MyChat
         public void Send()
         {
             _client.WriteString(_message);
+        }
+
+        public void WriteScore()
+        {
+            _client.WriteScore(_score1);
         }
 
 

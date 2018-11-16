@@ -36,8 +36,8 @@ namespace MyChat
             
             InitializeComponent();
             // vox: testing
-            TrueBtn.IsEnabled = false;
-            FalseBtn.IsEnabled = false;
+            TrueBtn.IsEnabled = true;
+            FalseBtn.IsEnabled = true;
             UpdateUI();
             this.DataContext = vm;
             vm.Score1 = 0;

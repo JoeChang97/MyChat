@@ -12,19 +12,19 @@ namespace MyChat.ViewModels
     {
         private readonly Client _client;
 
-        public int _score1;
+        
 
         public int Score1
         {
-            get { return _score1; }
-            set { _score1 = value; NotifyPropertyChanged(); }
+            get { return _client.Score1; }
+            set { _client.Score1 = value; NotifyPropertyChanged(); }
         }
 
-        public int _score2;
+        
         public int Score2
         {
-            get { return _score2; }
-            set { _score2 = value; NotifyPropertyChanged(); }
+            get { return _client.Score2; }
+            set { _client.Score2 = value; NotifyPropertyChanged(); }
         }
 
 
@@ -41,6 +41,7 @@ namespace MyChat.ViewModels
         }
         public DelegateCommand Connect { get; set; }
         public DelegateCommand Send { get; set; }
+        public DelegateCommand WriteScore { get; set; }
 
         
 
@@ -51,6 +52,7 @@ namespace MyChat.ViewModels
 
             Connect = new DelegateCommand(a=>_client.Connect(), b=>!_client.Connected);
             Send = new DelegateCommand(a => _client.Send(), b => _client.Connected);
+            WriteScore = new DelegateCommand(a => _client.WriteScore(), b => _client.Connected);
 
 
         }
@@ -66,6 +68,10 @@ namespace MyChat.ViewModels
             else if (e.PropertyName.Equals("Chatboard"))
             {
                 NotifyPropertyChanged("Chatboard");
+            }
+            else if (e.PropertyName.Equals("Score1"))
+            {
+                NotifyPropertyChanged("Score1");
             }
         }
 

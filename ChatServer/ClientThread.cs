@@ -40,5 +40,19 @@ namespace ChatServer
                 }
             }
         }
+        private void UpdateScore()
+        {
+            while (true)
+            {
+                try
+                {
+
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
     }
 }
