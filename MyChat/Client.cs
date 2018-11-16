@@ -60,16 +60,24 @@ namespace MyChat
 
             Send();
             _chatboard = "Welcome " + _message;
-            var thread = new Thread(GetMessage);
+            var thread = new Thread(UpdateUniverse);
             thread.Start();
         }
 
-        private void GetMessage()
+        private void UpdateUniverse()
         {
             while (true)
             {
                 string message = _client.ReadString();
-                Chatboard += "\r\n" + message;
+                if (message[message.Length - 1] == '-')
+                {
+                    // the player pressed True/False button
+                    Score1 = Int32.Parse(message.Substring(message.Length - 2, 1));
+                } else
+                {
+                    Chatboard += "\r\n" + message;
+                }
+                
             }
 
 
@@ -77,12 +85,12 @@ namespace MyChat
 
         public void Send()
         {
-            _client.WriteString(_message);
+            _client.WriteString(_message, false);
         }
 
         public void WriteScore()
         {
-            _client.WriteScore(_score1);
+            _client.WriteString(_score1.ToString(), true);
         }
 
 

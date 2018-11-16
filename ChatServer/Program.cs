@@ -25,7 +25,6 @@ namespace ChatServer
                 var client = socket.AcceptTcpClient();
 
                 string data = client.ReadString();
-                
 
                 ClientList.Add(data, client);
 
@@ -55,10 +54,19 @@ namespace ChatServer
             {
                 var broadcastSocket = item.Value;
                 var m = flag ? uname + " says: " + msg : msg;
-                item.Value.WriteString(m);
+                item.Value.WriteString(m, false);
                 
             }
         }
-        
+
+        public static void SyncScore(int score, bool flag)
+        {
+            foreach (var item in ClientList)
+            {
+                var broadcastSocket = item.Value;
+                item.Value.WriteString(score.ToString(), true);
+            }
+        }
+
     }
 }

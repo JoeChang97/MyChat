@@ -21,7 +21,9 @@ namespace ChatServer
             _clientname = clientName;
             _client = clientSocket;
             var thread = new Thread(DoChat);
+            //var scoreThread = new Thread(UpdateScore);
             thread.Start();
+            //scoreThread.Start();
         }
 
         private void DoChat()
@@ -40,19 +42,20 @@ namespace ChatServer
                 }
             }
         }
-        private void UpdateScore()
-        {
-            while (true)
-            {
-                try
-                {
-
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
-        }
+        //private void UpdateScore()
+        //{
+        //    while (true)
+        //    {
+        //        try
+        //        {
+        //            int scoreFromClient = _client.ReadScore();
+        //            Program.SyncScore(scoreFromClient, true);
+        //        }
+        //        catch(Exception ex)
+        //        {
+        //            Console.WriteLine(ex.ToString());
+        //        }
+        //    }
+        //}
     }
 }
