@@ -29,7 +29,7 @@ namespace ChatServer
 
                 ClientList.Add(data, client);
 
-                //WHY WON'T BROADCAST WORK
+                
                 Broadcast(data + " joined", data, false);
 
                 Console.WriteLine(data + " joined the chat room");
@@ -59,5 +59,6 @@ namespace ChatServer
                 
             }
         }
+        
     }
 }

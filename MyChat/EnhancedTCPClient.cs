@@ -39,6 +39,16 @@ namespace MyChat
             stream.Write(bytes, 0, bytes.Length);
         }
 
+        public static int ReadScore(this TcpClient client)
+        {
+            var bytes = new byte[client.ReceiveBufferSize];
+            var stream = client.GetStream();
+            stream.Read(bytes, 0, client.ReceiveBufferSize);
+            var score = Encoding.ASCII.GetString(bytes);
+            return Int32.Parse(score);
+
+        }
+
        
     }
 }
