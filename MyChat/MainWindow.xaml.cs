@@ -105,7 +105,7 @@ namespace MyChat
         {
             if (answer == (bool)answers[questionNum]) {
                 Console.WriteLine(playing1 + " got the right answer");
-                gameImg.Source = (ImageSource)FindResource("ImageCorrect");
+                //gameImg.Source = (ImageSource)FindResource("ImageCorrect");
                 if (player1IsPlaying)
                 {
                     vm.Score1 += 1;
@@ -117,7 +117,7 @@ namespace MyChat
             } else
             {
                 Console.WriteLine(playing1 + " got the wrong answer");
-                gameImg.Source = (ImageSource)FindResource("ImageIncorrect");
+                //gameImg.Source = (ImageSource)FindResource("ImageIncorrect");
                 // TODO: show WRONG ANSWER meme image
             }
             questionNum = questionNum == questions.Count - 1 ? 0 : questionNum + 1;

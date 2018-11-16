@@ -64,6 +64,7 @@ namespace MyChat.ViewModels
                 NotifyPropertyChanged("Connected");
                 Connect.RaiseCanExecuteChanged();
                 Send.RaiseCanExecuteChanged();
+                WriteScore.RaiseCanExecuteChanged();
             }
             else if (e.PropertyName.Equals("Chatboard"))
             {
