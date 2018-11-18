@@ -13,6 +13,8 @@ namespace ChatServer
     {
         public static Dictionary<string, TcpClient> ClientList = new Dictionary<string, TcpClient>();
 
+        public static List<string> clientNames = new List<string>();
+
         static void Main()
         {
             var socket = new TcpListener(IPAddress.Any, 8888);
@@ -28,16 +30,14 @@ namespace ChatServer
 
                 ClientList.Add(data, client);
 
-                
-                Broadcast(data + " joined", data, false);
+                Broadcast(data + " joined", data, false, false, 0);
 
                 Console.WriteLine(data + " joined the chat room");
 
+                clientNames.Add(data);
                 var clientthread = new ClientThread();
                 clientthread.StartClient(client, data);
             }
-
-
         }
 
         /// <summary>
@@ -48,25 +48,21 @@ namespace ChatServer
         /// <param name="uname">The user's name who sent it</param>
         /// <param name="flag"></param>
 
-        public static void Broadcast(string msg, string uname, bool flag)
+        public static void Broadcast(string msg, string uname, bool flag, bool isScore, int clientWhich)
         {
             foreach (var item in ClientList)
             {
                 var broadcastSocket = item.Value;
-                var m = flag ? uname + " says: " + msg : msg;
-                item.Value.WriteString(m, false);
-                
+                var m = "";
+                if (isScore)
+                {
+                    m = msg; 
+                } else
+                {
+                    m = flag ? uname + " says: " + msg : msg;
+                }
+                item.Value.WriteString(m, isScore, clientWhich);
             }
         }
-
-        public static void SyncScore(int score, bool flag)
-        {
-            foreach (var item in ClientList)
-            {
-                var broadcastSocket = item.Value;
-                item.Value.WriteString(score.ToString(), true);
-            }
-        }
-
     }
 }

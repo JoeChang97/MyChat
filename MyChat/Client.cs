@@ -71,28 +71,28 @@ namespace MyChat
                 string message = _client.ReadString();
                 if (message[message.Length - 1] == '-')
                 {
-                    // the player pressed True/False button
-                    Score1 = Int32.Parse(message.Substring(message.Length - 2, 1));
+                    //the player pressed True/ False button
+                    Score1 = Int32.Parse(message.Substring(0, message.IndexOf("--", StringComparison.Ordinal)));
+                }
+                else if (message[message.Length - 1] == '+')
+                {
+                    Score2 = Int32.Parse(message.Substring(0, message.IndexOf("++", StringComparison.Ordinal)));
                 } else
                 {
                     Chatboard += "\r\n" + message;
                 }
-                
             }
-
-
         }
 
         public void Send()
         {
-            _client.WriteString(_message, false);
+            _client.WriteString(_message, false, 0);
         }
 
         public void WriteScore()
         {
-            _client.WriteString(_score1.ToString(), true);
+            _client.WriteString(_score1.ToString(), true, 1);
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 

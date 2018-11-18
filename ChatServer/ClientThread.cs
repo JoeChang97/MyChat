@@ -20,21 +20,29 @@ namespace ChatServer
         {
             _clientname = clientName;
             _client = clientSocket;
-            var thread = new Thread(DoChat);
-            //var scoreThread = new Thread(UpdateScore);
+            var thread = new Thread(SyncClient);
             thread.Start();
-            //scoreThread.Start();
         }
 
-        private void DoChat()
+        private void SyncClient()
         {
             while (true)
             {
                 try
                 {
                     string dataFromClient = _client.ReadString();
-                    Program.Broadcast(dataFromClient, _clientname, true);
-                    Console.WriteLine(dataFromClient);
+                    if (_clientname == Program.clientNames[0])
+                    {
+                        Program.Broadcast(dataFromClient, _clientname, true, true, 1);
+                    }
+                    else if (_clientname == Program.clientNames[1])
+                    {
+                        Program.Broadcast(dataFromClient, _clientname, true, true, 2);
+                    }
+                    else
+                    {
+                        Program.Broadcast(dataFromClient, _clientname, true, false, 0);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -42,20 +50,5 @@ namespace ChatServer
                 }
             }
         }
-        //private void UpdateScore()
-        //{
-        //    while (true)
-        //    {
-        //        try
-        //        {
-        //            int scoreFromClient = _client.ReadScore();
-        //            Program.SyncScore(scoreFromClient, true);
-        //        }
-        //        catch(Exception ex)
-        //        {
-        //            Console.WriteLine(ex.ToString());
-        //        }
-        //    }
-        //}
     }
 }

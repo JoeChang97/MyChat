@@ -43,7 +43,7 @@ namespace MyChat.ViewModels
         public DelegateCommand Send { get; set; }
         public DelegateCommand WriteScore { get; set; }
 
-        
+
 
         public ClientViewModel()
         {
@@ -53,7 +53,6 @@ namespace MyChat.ViewModels
             Connect = new DelegateCommand(a=>_client.Connect(), b=>!_client.Connected);
             Send = new DelegateCommand(a => _client.Send(), b => _client.Connected);
             WriteScore = new DelegateCommand(a => _client.WriteScore(), b => _client.Connected);
-
 
         }
 
