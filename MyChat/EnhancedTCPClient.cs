@@ -33,6 +33,25 @@ namespace MyChat
             stream.Flush();
         }
 
+        public static void WriteAnswer(this TcpClient client, string answer)
+        {
+            byte[] bytes = Encoding.ASCII.GetBytes(answer);
+            var stream = client.GetStream();
+            stream.Write(bytes, 0, bytes.Length);
+            stream.Flush();
+
+        }
+
+        public static string ReadAnswer(this TcpClient client)
+        {
+            var bytes = new byte[client.ReceiveBufferSize];
+            var stream = client.GetStream();
+            stream.Read(bytes, 0, client.ReceiveBufferSize);
+            var answer = Encoding.ASCII.GetString(bytes);
+            return answer;
+
+        }
+
 
 
         public static string ReadString(this TcpClient client)
@@ -45,10 +64,12 @@ namespace MyChat
             return msg.Substring(0, msg.IndexOf("\0", StringComparison.Ordinal));
         }
 
-        public static void updateScoreBoard(this TcpClient client, int score)
-        {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).Player1Score.Content = score.ToString();
-        }
+        //public static void updateScoreBoard(this TcpClient client, int score)
+        //{
+        //    ((MainWindow)System.Windows.Application.Current.MainWindow).Player1Score.Content = score.ToString();
+        //}
+
+        
        
     }
 }

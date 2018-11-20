@@ -48,6 +48,31 @@ namespace ChatServer
                 {
                     Console.WriteLine(ex.ToString());
                 }
+
+
+
+
+
+
+                try
+                {
+                    string answerFromClient = _client.ReadAnswer();
+                    if (_clientname == Program.clientNames[0])
+                    {
+                        Program.Broadcast(answerFromClient, _clientname, true, true, 1);
+                    }
+                    else if (_clientname == Program.clientNames[1])
+                    {
+                        Program.Broadcast(answerFromClient, _clientname, true, true, 2);
+                    }
+                   
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
+
             }
         }
     }
