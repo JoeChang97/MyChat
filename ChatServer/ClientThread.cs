@@ -31,17 +31,31 @@ namespace ChatServer
                 try
                 {
                     string dataFromClient = _client.ReadString();
-                    if (_clientname == Program.clientNames[0])
+                    // Check if this is just an answer
+                    if (dataFromClient.Contains('#'))
                     {
-                        Program.Broadcast(dataFromClient, _clientname, true, true, 1);
-                    }
-                    else if (_clientname == Program.clientNames[1])
+                        if (_clientname == Program.clientNames[0])
+                        {
+                            Program.UpdateAnswer(dataFromClient, 1);
+                        }
+                        else if (_clientname == Program.clientNames[1])
+                        {
+                            Program.UpdateAnswer(dataFromClient, 2);
+                        }
+                    } else // It is a text or the score
                     {
-                        Program.Broadcast(dataFromClient, _clientname, true, true, 2);
-                    }
-                    else
-                    {
-                        Program.Broadcast(dataFromClient, _clientname, true, false, 0);
+                        if (_clientname == Program.clientNames[0])
+                        {
+                            Program.Broadcast(dataFromClient, _clientname, true, true, 1);
+                        }
+                        else if (_clientname == Program.clientNames[1])
+                        {
+                            Program.Broadcast(dataFromClient, _clientname, true, true, 2);
+                        }
+                        else
+                        {
+                            Program.Broadcast(dataFromClient, _clientname, true, false, 0);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -54,23 +68,23 @@ namespace ChatServer
 
 
 
-                try
-                {
-                    string answerFromClient = _client.ReadAnswer();
-                    if (_clientname == Program.clientNames[0])
-                    {
-                        Program.Broadcast(answerFromClient, _clientname, true, true, 1);
-                    }
-                    else if (_clientname == Program.clientNames[1])
-                    {
-                        Program.Broadcast(answerFromClient, _clientname, true, true, 2);
-                    }
+                //try
+                //{
+                //    string answerFromClient = _client.ReadAnswer();
+                //    if (_clientname == Program.clientNames[0])
+                //    {
+                //        Program.UpdateAnswer(answerFromClient, 1);
+                //    }
+                //    else if (_clientname == Program.clientNames[1])
+                //    {
+                //        Program.UpdateAnswer(answerFromClient, 2);
+                //    }
                    
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.ToString());
+                //}
 
 
             }

@@ -79,14 +79,14 @@ namespace ChatServer
                 var answerSocket = item.Value;
                 if (clientWhich == 1)
                 {
-                    if (ans == "correct")
+                    if (ans == "correct#")
                         player1Score++;
 
                     item.Value.WriteString(player1Score.ToString(),true, 1);
                 }
                 else if (clientWhich == 2)
                 {
-                    if (ans == "correct")
+                    if (ans == "correct#")
                         player2Score++;
                     item.Value.WriteString(player2Score.ToString(), true, 2);
                 }

@@ -42,15 +42,15 @@ namespace MyChat
 
         }
 
-        public static string ReadAnswer(this TcpClient client)
-        {
-            var bytes = new byte[client.ReceiveBufferSize];
-            var stream = client.GetStream();
-            stream.Read(bytes, 0, client.ReceiveBufferSize);
-            var answer = Encoding.ASCII.GetString(bytes);
-            return answer;
+        //public static string ReadAnswer(this TcpClient client)
+        //{
+        //    var bytes = new byte[client.ReceiveBufferSize];
+        //    var stream = client.GetStream();
+        //    stream.Read(bytes, 0, client.ReceiveBufferSize);
+        //    var answer = Encoding.ASCII.GetString(bytes);
+        //    return answer;
 
-        }
+        //}
 
 
 
@@ -61,6 +61,7 @@ namespace MyChat
             var stream = client.GetStream();
             stream.Read(bytes, 0, client.ReceiveBufferSize);
             var msg = Encoding.ASCII.GetString(bytes);
+            Console.WriteLine(msg);
             return msg.Substring(0, msg.IndexOf("\0", StringComparison.Ordinal));
         }
 

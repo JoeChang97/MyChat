@@ -94,6 +94,8 @@ namespace MyChat
             while (true)
             {
                 string message = _client.ReadString();
+                if (message.Contains('#'))
+                    break;
                 if (message[message.Length - 1] == '-')
                 {
                     //the player pressed True/ False button
@@ -174,9 +176,9 @@ namespace MyChat
             //_answerInput = true;
             if (answers[questionNum] == true)
             {
-                _client.WriteAnswer("correct");
+                _client.WriteAnswer("correct#");
             }
-            else { _client.WriteAnswer("incorrect"); }
+            else { _client.WriteAnswer("incorrect#"); }
 
             UpdateUI();
 
@@ -186,9 +188,9 @@ namespace MyChat
             // _answerInput = false;
             if (answers[questionNum] == false)
             {
-                _client.WriteAnswer("correct");
+                _client.WriteAnswer("correct#");
             }
-            else { _client.WriteAnswer("incorrect"); }
+            else { _client.WriteAnswer("incorrect#"); }
 
             UpdateUI();
         }
