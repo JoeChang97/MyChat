@@ -12,21 +12,11 @@ namespace MyChat
 {
     class Client : INotifyPropertyChanged
     {
-
         private Dictionary<int, String> questions = new Dictionary<int, String>();
         private Dictionary<int, bool> answers = new Dictionary<int, bool>();
         private int questionNum = 0;
         private string _currentQuestion;
-        
-        
-        
-        
-       
-
-
         private TcpClient _client;
-
-        
 
         public string CurrentQuestion
         {
@@ -104,6 +94,7 @@ namespace MyChat
                 else if (message[message.Length - 1] == '+')
                 {
                     Score2 = Int32.Parse(message.Substring(0, message.IndexOf("++", StringComparison.Ordinal)));
+                    Console.WriteLine(Score2);
                 } else
                 {
                     Chatboard += "\r\n" + message;
@@ -115,8 +106,6 @@ namespace MyChat
         {
             _client.WriteString(_message, false, 0);
         }
-
-
 
         private void addQuestions()
         {
@@ -150,31 +139,14 @@ namespace MyChat
             questions.Add(9, "Are you a robot?");
             answers.Add(9, false);
         }
-
-        //public bool CheckAnswer()
-        //{
-        //    if (_answerInput == answers[questionNum])
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-
-        //}
-       
-
-        //public void WriteScore()
-        //{
-        //    _client.WriteString(_score1.ToString(), true, 1);
-        //}
-        
-
         public void WriteTrue()
         {
-            //_answerInput = true;
-            if (answers[questionNum] == true)
+            if (questionNum == 10)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = false;
+            }
+            if (answers[questionNum - 1] == true)
             {
                 _client.WriteAnswer("correct#");
             }
@@ -185,8 +157,12 @@ namespace MyChat
         }
         public void WriteFalse()
         {
-            // _answerInput = false;
-            if (answers[questionNum] == false)
+            if (questionNum == 10)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = false;
+            }
+            if (answers[questionNum - 1] == false)
             {
                 _client.WriteAnswer("correct#");
             }
@@ -197,9 +173,12 @@ namespace MyChat
 
         public void UpdateUI()
         {
-           
-            ((MainWindow)System.Windows.Application.Current.MainWindow).QuestionLabel.Content = questions[questionNum];
-              questionNum++;
+            
+            questionNum++;
+            if (questionNum == 11) {
+                questionNum = 10;
+            }
+            ((MainWindow)System.Windows.Application.Current.MainWindow).QuestionLabel.Content = questions[questionNum - 1];
             ((MainWindow)System.Windows.Application.Current.MainWindow).GameStatus.Content = "Question " + questionNum + " of 10";
         }
 

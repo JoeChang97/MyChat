@@ -62,31 +62,6 @@ namespace ChatServer
                 {
                     Console.WriteLine(ex.ToString());
                 }
-
-
-
-
-
-
-                //try
-                //{
-                //    string answerFromClient = _client.ReadAnswer();
-                //    if (_clientname == Program.clientNames[0])
-                //    {
-                //        Program.UpdateAnswer(answerFromClient, 1);
-                //    }
-                //    else if (_clientname == Program.clientNames[1])
-                //    {
-                //        Program.UpdateAnswer(answerFromClient, 2);
-                //    }
-                   
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex.ToString());
-                //}
-
-
             }
         }
     }

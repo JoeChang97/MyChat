@@ -76,6 +76,10 @@ namespace MyChat.ViewModels
             {
                 NotifyPropertyChanged("Score1");
             }
+            else if (e.PropertyName.Equals("Score2"))
+            {
+                NotifyPropertyChanged("Score2");
+            }
         }
 
 

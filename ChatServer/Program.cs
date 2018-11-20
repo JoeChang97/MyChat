@@ -12,7 +12,6 @@ namespace ChatServer
     class Program
 
     {
-        
         public static Dictionary<string, TcpClient> ClientList = new Dictionary<string, TcpClient>();
 
         private static int player1Score = 0;
@@ -73,30 +72,35 @@ namespace ChatServer
         }
         
         public static void UpdateAnswer(string ans, int clientWhich)
-        { 
-            foreach (var item in ClientList)
+        {
+            Console.WriteLine(ClientList);
+                
+            if (clientWhich == 1)
             {
-                var answerSocket = item.Value;
-                if (clientWhich == 1)
+                if (ans == "correct#")
                 {
-                    if (ans == "correct#")
-                        player1Score++;
-
-                    item.Value.WriteString(player1Score.ToString(),true, 1);
+                    player1Score++;
                 }
-                else if (clientWhich == 2)
+
+                // update every clients
+                foreach (var item in ClientList)
                 {
-                    if (ans == "correct#")
-                        player2Score++;
+                    item.Value.WriteString(player1Score.ToString(), true, 1);
+                }
+            }
+            else if (clientWhich == 2)
+            {
+                if (ans == "correct#")
+                {
+                    player2Score++;
+                }
+
+                // update every clients
+                foreach (var item in ClientList)
+                {
                     item.Value.WriteString(player2Score.ToString(), true, 2);
                 }
-                
-
-
             }
         }
-
-        
-
     }
 }
