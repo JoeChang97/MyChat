@@ -42,18 +42,6 @@ namespace MyChat
 
         }
 
-        //public static string ReadAnswer(this TcpClient client)
-        //{
-        //    var bytes = new byte[client.ReceiveBufferSize];
-        //    var stream = client.GetStream();
-        //    stream.Read(bytes, 0, client.ReceiveBufferSize);
-        //    var answer = Encoding.ASCII.GetString(bytes);
-        //    return answer;
-
-        //}
-
-
-
         public static string ReadString(this TcpClient client)
         {
             var bytes = new byte[client.ReceiveBufferSize];
@@ -64,13 +52,6 @@ namespace MyChat
             Console.WriteLine(msg);
             return msg.Substring(0, msg.IndexOf("\0", StringComparison.Ordinal));
         }
-
-        //public static void updateScoreBoard(this TcpClient client, int score)
-        //{
-        //    ((MainWindow)System.Windows.Application.Current.MainWindow).Player1Score.Content = score.ToString();
-        //}
-
         
-       
     }
 }

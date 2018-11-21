@@ -85,18 +85,36 @@ namespace MyChat
             {
                 string message = _client.ReadString();
                 if (message.Contains('#'))
+                    // It is just checking the answer
                     break;
                 if (message[message.Length - 1] == '-')
-                {
-                    //the player pressed True/ False button
-                    Score1 = Int32.Parse(message.Substring(0, message.IndexOf("--", StringComparison.Ordinal)));
+                {   // It is the first player playing
+                    if (int.TryParse(message.Substring(0, message.IndexOf("--", StringComparison.Ordinal)), out int score))
+                    {
+                        // It is a score
+                        Score1 = score;
+                    } else
+                    {
+                        // It is a text
+                        Chatboard += "\r\n" + message.Substring(0, message.IndexOf("--", StringComparison.Ordinal));
+                    }
+                    
                 }
                 else if (message[message.Length - 1] == '+')
+                {   // It is the second player playing
+                    if (int.TryParse(message.Substring(0, message.IndexOf("++", StringComparison.Ordinal)), out int score))
+                    {
+                        // It is a score
+                        Score2 = score;
+                    }
+                    else
+                    {
+                        // It is a text
+                        Chatboard += "\r\n" + message.Substring(0, message.IndexOf("++", StringComparison.Ordinal));
+                    }
+                } else 
                 {
-                    Score2 = Int32.Parse(message.Substring(0, message.IndexOf("++", StringComparison.Ordinal)));
-                    Console.WriteLine(Score2);
-                } else
-                {
+                    // It is the first connect
                     Chatboard += "\r\n" + message;
                 }
             }

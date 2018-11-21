@@ -12,8 +12,6 @@ namespace MyChat.ViewModels
     {
         private readonly Client _client;
 
-
-
         public int Score1
         {
             get { return _client.Score1; }
@@ -43,9 +41,7 @@ namespace MyChat.ViewModels
         public DelegateCommand Send { get; set; }
         public DelegateCommand WriteTrue { get; set; }
         public DelegateCommand WriteFalse{get; set;}
-
-
-
+        
         public ClientViewModel()
         {
             _client = new Client();
@@ -82,8 +78,6 @@ namespace MyChat.ViewModels
             }
         }
 
-
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] string prop = null)
@@ -94,16 +88,5 @@ namespace MyChat.ViewModels
             }
         }
     }
-        
-       
-
-
-
-
-
-
-
-
-        
     
 }
