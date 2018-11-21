@@ -142,20 +142,20 @@ namespace MyChat
             questions.Add(4, "George Washington had wooden teeth");
             answers.Add(4, false);
 
-            questions.Add(5, "An American was the first man in space.");
+            questions.Add(5, "The Peacemaker was a delta-winged" + "\n" + " bomber from the 50s to 80s");
             answers.Add(5, false);
 
-            questions.Add(6, "Are you a robot?");
-            answers.Add(6, false);
+            questions.Add(6, "A T-1 connection can theoretically deliver at 1.544 Mbps");
+            answers.Add(6, true);
 
-            questions.Add(7, "Are you a robot?");
+            questions.Add(7, "Pyruvate kinase dephosphorylates pyruvate in gluconeogenesis");
             answers.Add(7, false);
 
-            questions.Add(8, "Are you a robot?");
-            answers.Add(8, false);
+            questions.Add(8, "Your forearm is approximately the length of your foot.");
+            answers.Add(8, true);
 
-            questions.Add(9, "Are you a robot?");
-            answers.Add(9, false);
+            questions.Add(9, "The Fokker Eindecker was the first plane" + "\n" + " capable of firing between propeller blades");
+            answers.Add(9, true);
         }
         public void WriteTrue()
         {

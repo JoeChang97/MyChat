@@ -66,6 +66,7 @@ namespace ChatServer
                 } else
                 {
                     m = flag ? uname + " says: " + msg : msg;
+                    //m = uname + " says: " + msg;
                 }
                 item.Value.WriteString(m, isScore, clientWhich);
             }
