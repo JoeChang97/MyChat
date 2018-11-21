@@ -46,11 +46,11 @@ namespace ChatServer
                     {
                         if (_clientname == Program.clientNames[0])
                         {
-                            Program.Broadcast(dataFromClient, _clientname, true, true, 1);
+                            Program.Broadcast(dataFromClient, _clientname, true, false, 1);
                         }
                         else if (_clientname == Program.clientNames[1])
                         {
-                            Program.Broadcast(dataFromClient, _clientname, true, true, 2);
+                            Program.Broadcast(dataFromClient, _clientname, true, false, 2);
                         }
                         else
                         {
