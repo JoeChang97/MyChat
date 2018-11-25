@@ -12,9 +12,12 @@ namespace MyChat
 {
     class Client : INotifyPropertyChanged
     {
+        // Qs and As bank
         private Dictionary<int, String> questions = new Dictionary<int, String>();
         private Dictionary<int, bool> answers = new Dictionary<int, bool>();
+        // keep track of the question index
         private int questionNum = 0;
+        // current question text
         private string _currentQuestion;
         private TcpClient _client;
 
@@ -61,24 +64,40 @@ namespace MyChat
             get { return _client != null && _client.Connected; }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
         public void Connect()
         {
+            // Initialize the connection IP and port
             _client = new TcpClient("127.0.0.1", 8888);
             OnPropertyChanged("Connected");
-            ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = true;
-            ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = true;
-            addQuestions();
-            _currentQuestion = questions[questionNum];
-            _score1 = 0;
-            _score2 = 0;
+
+            // client connected, inialize the interface
+            InitializeUI();
             UpdateUI();
 
             Send();
             _chatboard = "Welcome " + _message;
             var thread = new Thread(UpdateUniverse);
+            // Start the thread for the chat
             thread.Start();
         }
 
+        /// <summary>
+        /// A thread that check the string from stream and update interact accordinglyap
+        /// If the string is an answer, do not do anything
+        /// If it is a player playing, check if it is a score or a text and update chat or score
+        /// Otherwise, it is the first connect, just show the text
+        /// </summary>
         private void UpdateUniverse()
         {
             while (true)
@@ -122,9 +141,77 @@ namespace MyChat
 
         public void Send()
         {
+            // Send the text
             _client.WriteString(_message, false, 0);
         }
 
+        
+        public void WriteTrue()
+        {
+            if (questionNum == 10)
+            {
+                // The game is finished, disable buttons
+                ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = false;
+            }
+            if (answers[questionNum - 1] == true)
+            {
+                // The answer is 'true', correct
+                _client.WriteAnswer("correct#");
+            }
+            else { _client.WriteAnswer("incorrect#"); }
+
+            UpdateUI();
+
+        }
+        public void WriteFalse()
+        {
+            if (questionNum == 10)
+            {
+                // The game is finished, disable buttons
+                ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = false;
+            }
+            if (answers[questionNum - 1] == false)
+            {
+                // The answer is 'false', correct
+                _client.WriteAnswer("correct#");
+            }
+            else { _client.WriteAnswer("incorrect#"); }
+
+            UpdateUI();
+        }
+
+        /// <summary>
+        /// A helper method that initializes the interface
+        /// </summary>
+        public void InitializeUI()
+        {
+            // enable buttons, add questions and reset scores
+            ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = true;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = true;
+            addQuestions();
+            _currentQuestion = questions[questionNum];
+            _score1 = 0;
+            _score2 = 0;
+        }
+
+        public void UpdateUI()
+        {
+            // increment question index
+            questionNum++;
+            if (questionNum == 11) {
+                // reset question to avoid out of bound error
+                questionNum = 10;
+            }
+            // update UI content
+            ((MainWindow)System.Windows.Application.Current.MainWindow).QuestionLabel.Content = questions[questionNum - 1];
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GameStatus.Content = "Question " + questionNum + " of 10";
+        }
+
+        /// <summary>
+        /// A helper method that add questions to the question bank
+        /// </summary>
         private void addQuestions()
         {
             questions.Add(0, "Are you a robot?");
@@ -157,59 +244,7 @@ namespace MyChat
             questions.Add(9, "The Fokker Eindecker was the first plane" + "\n" + " capable of firing between propeller blades");
             answers.Add(9, true);
         }
-        public void WriteTrue()
-        {
-            if (questionNum == 10)
-            {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = false;
-                ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = false;
-            }
-            if (answers[questionNum - 1] == true)
-            {
-                _client.WriteAnswer("correct#");
-            }
-            else { _client.WriteAnswer("incorrect#"); }
-
-            UpdateUI();
-
-        }
-        public void WriteFalse()
-        {
-            if (questionNum == 10)
-            {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).TrueBtn.IsEnabled = false;
-                ((MainWindow)System.Windows.Application.Current.MainWindow).FalseBtn.IsEnabled = false;
-            }
-            if (answers[questionNum - 1] == false)
-            {
-                _client.WriteAnswer("correct#");
-            }
-            else { _client.WriteAnswer("incorrect#"); }
-
-            UpdateUI();
-        }
-
-        public void UpdateUI()
-        {
-            
-            questionNum++;
-            if (questionNum == 11) {
-                questionNum = 10;
-            }
-            ((MainWindow)System.Windows.Application.Current.MainWindow).QuestionLabel.Content = questions[questionNum - 1];
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GameStatus.Content = "Question " + questionNum + " of 10";
-        }
 
         
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }

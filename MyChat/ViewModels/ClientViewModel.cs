@@ -18,7 +18,6 @@ namespace MyChat.ViewModels
             set { _client.Score1 = value; NotifyPropertyChanged(); }
         }
 
-
         public int Score2
         {
             get { return _client.Score2; }
